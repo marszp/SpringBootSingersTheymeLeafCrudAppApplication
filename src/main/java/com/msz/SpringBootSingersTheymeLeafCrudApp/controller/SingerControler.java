@@ -6,8 +6,7 @@ import com.msz.SpringBootSingersTheymeLeafCrudApp.service.SingerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -40,6 +39,35 @@ public class SingerControler {
         //Add to the model list of singers and use "singers" as a model attribute
         theModel.addAttribute("singers",theSingers);
         //Return template url
-        return "/singers/singers-list";
+        return "singers/singers-list";
+    }
+
+    @GetMapping("/showFormForAdd")
+    public String showFormForAdd(Model theModel){
+        //Create empty Singer
+        Singer theSinger = new Singer();
+        //Add to the model empty singer and use "singer" as a model attribute
+        theModel.addAttribute("singer",theSinger);
+        //Return template url
+        return "singers/singer-form";
+    }
+
+    @PostMapping("/save")
+    public String save(@ModelAttribute("singer") Singer theSinger){
+        singerService.save(theSinger);
+        return "redirect:/api/singers";
+    }
+
+    @GetMapping("/delete")
+    public String delete(@ModelAttribute("singerId") int singerId){
+        singerService.deleteById(singerId);
+        return "redirect:/api/singers";
+    }
+
+    @GetMapping("/showFormForUpdate")
+    public String showFormForUpdate(@RequestParam("singerId") int theId, Model theModel){
+        Singer tempSinger = singerService.findById(theId);
+        theModel.addAttribute("singer",tempSinger);
+        return "singers/singer-form";
     }
 }
