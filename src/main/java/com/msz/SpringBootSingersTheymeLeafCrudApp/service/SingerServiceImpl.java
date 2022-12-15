@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service // important to mark this class as a @Service -> SB.Bean
 public class SingerServiceImpl implements SingerService{
@@ -26,16 +27,24 @@ public class SingerServiceImpl implements SingerService{
 
     @Override
     public Singer findById(int id) {
-        return null;
+
+        Optional<Singer> theSinger = singersRepository.findById(id);
+
+        if(theSinger.isPresent()) {
+            return theSinger.get();
+        }else{
+            throw new RuntimeException("We didn't find Singer id - " + id);
+        }
     }
 
     @Override
     public void save(Singer theSinger) {
-
+        singersRepository.save(theSinger);
     }
 
     @Override
     public void deleteById(int theId) {
+        singersRepository.deleteById(theId);
 
     }
 }
