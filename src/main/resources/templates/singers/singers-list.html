@@ -1,0 +1,41 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+    <!-- Title -->>
+    <title>Spring Boot Singers Thymeleaf CRUD App - Hello World</title>
+</head>
+<body>
+<div class="container">
+    <h3>List of Singers</h3>
+    <hr>
+    <!-- create a Add button -->
+    <!-- @ symbol is Reference to context path of your application app root -->
+
+    <!-- create a table -->
+    <table class="table table-bordered table-striped">
+        <thead class="thead-dark">
+            <th>First Mame</th>
+            <th>Last Name</th>
+            <th>Email</th>
+            <th>Voice Type</th>
+            <th>Action</th>
+        </thead>
+        <tbody>
+            <!-- loop over each tempSinger at "singers". Singers are given by Model and they are a List => Array List -->
+            <!--/*@thymesVar id="singers" type="com.msz.SpringBootSingersTheymeLeafCrudApp.controler.SingerControler"*/-->
+            <tr th:each="tempSinger : ${singers}">
+                <td th:text="${tempSinger.firstName}" />
+                <td th:text="${tempSinger.lastName}" />
+                <td th:text="${tempSinger.email}" />
+                <td th:text="${tempSinger.voiceType}" />
+                <!-- new button for update singer -->
+            </tr>
+        </tbody>
+    </table>
+</div>
+</body>
