@@ -21,7 +21,7 @@ public class SingersExceptionHandler {
 
     // Add an exception handler forSingerNoFoundException and any Exception
     @ExceptionHandler
-    public String handleException(Exception exc, Model theModel){
+    String handleException(Exception exc, Model theModel){
         resultdate = new Date(System.currentTimeMillis());
 
         errorLisst.add(String.valueOf(HttpStatus.BAD_REQUEST.value()));
