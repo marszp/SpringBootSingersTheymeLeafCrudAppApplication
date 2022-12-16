@@ -19,4 +19,8 @@ Because Spring Boot is used, there is no need to create config file, because @Sp
 12. Created @RequestMapping for addSinger + created singer-form.html and updated singers-list.html.
 13. Created @RequestMapping for updatingSinger + updated singer-form.html and singers-list.html.
 14. Created @RequestMapping for deletingSinger + updated singer-form.html and singers-list.html.
-15. Tested and fixed few bugs...
+15. Tested and fixed few bugs... 
+16. Things ToDo:
+      1. Add Exception Handling
+      2. Test and break project
+
