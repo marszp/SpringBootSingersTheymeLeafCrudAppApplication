@@ -22,5 +22,8 @@ Because Spring Boot is used, there is no need to create config file, because @Sp
 15. Tested and fixed few bugs... 
 16. Things ToDo:
       1. Add Exception Handling
+         1. Create exception 
+         2. Create ErrorResponse
+         3. Crete AOP exception handler
       2. Test and break project
 
