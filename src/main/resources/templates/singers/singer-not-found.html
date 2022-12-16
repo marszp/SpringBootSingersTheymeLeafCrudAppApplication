@@ -1,0 +1,44 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+    <!-- Title -->
+    <title>Spring Boot Singers Thymeleaf CRUD App - Singer Not Found</title>
+</head>
+<body>
+<div class="container">
+    <h3>List of Singers</h3>
+    <hr>
+    <h4>An Error occured</h4>
+    <table class="table table-bordered table-striped">
+        <thead class="thead-dark">
+            <th>Error status</th>
+            <th>Error message</th>
+            <th>Error Time Stamp</th>
+        </thead>
+        <tbody>
+              <!--/*@thymesVar id="singer_status" type="com.msz.SpringBootSingersTheymeLeafCrudApp.handlers.SingersExceptionHandler"*/-->
+              <td th:text="${singer_status}" class="funy"/>
+              <!--/*@thymesVar id="singer_message" type="com.msz.SpringBootSingersTheymeLeafCrudApp.handlers.SingersExceptionHandler"*/-->
+              <td th:text="${singer_message}" class="funy"/>
+              <!--/*@thymesVar id="singer_time_stamp" type="com.msz.SpringBootSingersTheymeLeafCrudApp.handlers.SingersExceptionHandler"*/-->
+              <td th:text="${singer_time_stamp}" class="funy"/>
+        </tbody>
+    </table>
+
+
+<!--    <h2><p th:text="'Error status: ' + ${singer_status}" class="funy"/></h2>-->
+<!--    <h2><p th:text="'Error message: ' + ${singer_message}" class="funy"/></h2>-->
+<!--    <h2><p th:text="'Error time stamp: ' + ${singer_time_stamp}" class="funy"/></h2>-->
+    <!-- create a Add button -->
+    <!-- @ symbol is Reference to context path of your application app root -->
+    <a th:href="@{/api/singers}"
+       class="btn btn-primary brn-sm mb-3">
+        Return to Singers List
+    </a>
+</div>
+</body>

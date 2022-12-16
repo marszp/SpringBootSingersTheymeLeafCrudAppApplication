@@ -3,6 +3,7 @@ package com.msz.SpringBootSingersTheymeLeafCrudApp.service;
 
 import com.msz.SpringBootSingersTheymeLeafCrudApp.dao.SingersRepository;
 import com.msz.SpringBootSingersTheymeLeafCrudApp.entity.Singer;
+import com.msz.SpringBootSingersTheymeLeafCrudApp.handlers.SingersNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -33,7 +34,7 @@ public class SingerServiceImpl implements SingerService{
         if(theSinger.isPresent()) {
             return theSinger.get();
         }else{
-            throw new RuntimeException("We didn't find Singer id - " + id);
+            throw new SingersNotFoundException("We didn't find Singer id - " + id);
         }
     }
 
