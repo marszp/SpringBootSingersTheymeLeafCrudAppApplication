@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
-    <!-- Title -->>
+    <!-- Title -->
     <title>Spring Boot Singers Thymeleaf CRUD App - Hello World</title>
 </head>
 <body>
@@ -15,7 +15,10 @@
     <hr>
     <!-- create a Add button -->
     <!-- @ symbol is Reference to context path of your application app root -->
-
+    <a th:href="@{/api/showFormForAdd}"
+       class="btn btn-primary brn-sm mb-3">
+        Add Singer
+    </a>
     <!-- create a table -->
     <table class="table table-bordered table-striped">
         <thead class="thead-dark">
@@ -27,13 +30,25 @@
         </thead>
         <tbody>
             <!-- loop over each tempSinger at "singers". Singers are given by Model and they are a List => Array List -->
-            <!--/*@thymesVar id="singers" type="com.msz.SpringBootSingersTheymeLeafCrudApp.controler.SingerControler"*/-->
+            <!--/*@thymesVar id="singers" type="com.msz.SpringBootSingersTheymeLeafCrudApp.controller.SingerControler"*/-->
             <tr th:each="tempSinger : ${singers}">
                 <td th:text="${tempSinger.firstName}" />
                 <td th:text="${tempSinger.lastName}" />
                 <td th:text="${tempSinger.email}" />
                 <td th:text="${tempSinger.voiceType}" />
-                <!-- new button for update singer -->
+                <td>
+                    <!-- new button for update singer -->
+                    <a th:href="@{/api/showFormForUpdate(singerId=${tempSinger.id})}"
+                       class="btn btn-info btn-sm">
+                        Update
+                    </a>
+                    <!-- new button for delete singer -->
+                    <a th:href="@{/api/delete(singerId=${tempSinger.id})}"
+                       class="btn btn-danger btn-sm"
+                       th:onclick="if (!confirm('Are you sure you want to delete this singer: [(${tempSinger.firstName})] [(${tempSinger.lastName})] ?')) return false">
+                        Delete
+                    </a>
+                </td>
             </tr>
         </tbody>
     </table>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+
+    <title>Save Singer</title>
+</head>
+
+<body>
+<div class="container">
+    <h3>Singer Directory</h3>
+    <hr>
+
+    <p class="h4 mb-4">Save Singer</p>
+
+
+    <!--/*@thymesVar id="singer" type="com.msz.SpringBootSingersTheymeLeafCrudApp.entity.Singer"*/-->
+    <form action="#" th:action="@{/api/save}"
+          th:object="${singer}" method="POST">
+        <!-- whenever the form is loaded it uses the default methods to get values
+             call getter methods -> this proces will pre populated values from thModel        -->
+        <!-- add a hidden form field to handle update, it's requider for update ,this binds to the modelAttribute
+        tells your app witch object update-->
+        <input type="hidden" th:field="*{id}"/>
+        <input type="text" th:field="*{firstName}"
+               class="form-control mb-4 col-4" placeholder="First name">
+        <input type="text" th:field="*{lastName}"
+               class="form-control mb-4 col-4" placeholder="Last name">
+        <input type="text" th:field="*{email}"
+               class="form-control mb-4 col-4" placeholder="Email">
+        <input type="text" th:field="*{voiceType}"
+               class="form-control mb-4 col-4" placeholder="Voice Type">
+
+
+        <button type="submit" class="btn btn-info cool-2">Save</button>
+
+    </form>
+    <hr>
+    <a th:href="@{/api/singers}">Back to Singer's List</a>
+
+</div>
+
+</body>
+
+</html>
