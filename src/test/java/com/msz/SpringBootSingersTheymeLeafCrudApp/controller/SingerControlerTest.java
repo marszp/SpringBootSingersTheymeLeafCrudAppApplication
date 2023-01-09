@@ -32,7 +32,7 @@ class SingerControlerTest {
     @Rule
     public MockitoRule mockitoRule = MockitoJUnit.rule();
 
-    @Mock
+
     SingersRepository singersRepository = Mockito.mock(SingersRepository.class);;
 
     @InjectMocks
